@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1542198112094.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "4E2CBCBA",
+    "lastKnownWriteTime" : 5292976843906638626,
+    "last_content_update" : 1542198112094,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "f47cd7b16f5641189946ca4b2b8dfa21",
+        "name" : "HA_state",
+        "title" : "HA_state"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}

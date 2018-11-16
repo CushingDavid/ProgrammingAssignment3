@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1542193526635.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "44023CF5",
+    "lastKnownWriteTime" : 1542236763,
+    "last_content_update" : 1542236763006,
+    "path" : "~/GitHub/ProgrammingAssignment3/best.R",
+    "project_path" : "best.R",
+    "properties" : {
+        "cursorPosition" : "37,0",
+        "scrollLine" : "9",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

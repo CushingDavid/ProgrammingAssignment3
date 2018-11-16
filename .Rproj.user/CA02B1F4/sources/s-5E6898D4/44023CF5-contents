@@ -1,0 +1,41 @@
+# R-Programming Assignment 3 - Part 2
+# Finding the best hospital using the "outcome-of-care-measures.csv" file
+# Create a function that returns the lowest 30-day mortality for:
+#   a. Heart attack (column 11)
+#   b. heart failure (column 17)
+#   c. pneumonia (column 23)
+# for a given state (column 7)
+# 
+
+# Read in the data from the .csv file:
+outcomef <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+
+# Reduce the data frame to the relevant data:
+outcome <- as.data.frame(cbind(outcomef[ ,2], outcomef[ ,7], outcomef[ ,11], outcomef[ ,17], outcomef[ ,23]))
+
+# Name the columns of outcome with the relevant titles: 
+colnames(outcome) <- c("hospital_name", "state", "heart_attack", "heart_failure", "pneumonia")
+
+# Convert factors to numeric values:
+outcome$heart_attack <- as.numeric(as.character(outcome$heart_attack))
+outcome$heart_failure <- as.numeric(as.character(outcome$heart_failure))
+outcome$pneumonia <- as.numeric(as.character( outcome$pneumonia ))
+
+## Save for later --- state_split <- split(outcome, outcome$State)
+
+hahosp <- tapply(outcome$heart_attack, INDEX = outcome$state, min, na.rm = TRUE)
+
+## HA_state <- tapply(outcome[ , 11], INDEX = outcome$State, min, na.rm = TRUE)
+
+#best <- function(state, outcome) {
+#    print(state)
+#    print(outcome)
+#    print(state_split$state[ ,2])
+    #hahosp = tapply(state_split$state[ ,2], INDEX = state_split$state[ ,11], min, na.rm = TRUE)
+    
+#}
+print(hahosp)
+
+
+
+    
