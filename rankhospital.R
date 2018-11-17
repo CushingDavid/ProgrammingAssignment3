@@ -32,15 +32,22 @@ rankhospital <- function(state, illness , num = "best")
         
     }
     
+    
     if (illness == "heart_attack") { 
         ## order the outcome dataset by state - heart_attack - hospital_name   
-        outcome_sort <- outcome[with(outcome, order(state, heart_attack, hospital_name, na.last = NA)),] 
+        outcome_sort <- outcome[with(outcome, order(state, heart_attack, hospital_name, na.last = NA)),]
+        outcome_sort$rank <- NA
+        outcome_sort$rank=unlist(with(outcome_sort,tapply(heart_attack,state,order)))
         
     }   else if (illness == "heart_failure") {
-        outcome_sort <- outcome[with(outcome, order(state, heart_failure, hospital_name, na.last = NA)),] 
+        outcome_sort <- outcome[with(outcome, order(state, heart_failure, hospital_name, na.last = NA)),]
+        outcome_sort$rank <- NA
+        outcome_sort$rank=unlist(with(outcome_sort,tapply(heart_failure,state,order)))
         
     }    else if (illness == "pneumonia") {
-        outcome_sort <- outcome[with(outcome, order(state, pneumonia, hospital_name, na.last = NA)),] 
+        outcome_sort <- outcome[with(outcome, order(state, pneumonia, hospital_name, na.last = NA)),]
+        outcome_sort$rank <- NA
+        outcome_sort$rank=unlist(with(outcome_sort,tapply(pneumonia,state,order)))
         
     }    else {
         Print("Try again with a different illness!") 
@@ -51,18 +58,6 @@ rankhospital <- function(state, illness , num = "best")
     
     
     ## Return hospital name in that state with the given rank. 
-    outcome_PNsort$rank <- aggregate.data.frame(outcome_PNsort, list(outcome_PNsort$state),function(x) {
-        x <- rank(outcome_PNsort$pneumonia)
-        return(x)
-        
-    })
-    tapply(outcome_PNsort$pneumonia, outcome_PNsort$state, function(x) {
-        rows <- nrow(outcome_PNsort$pneumonia)
-        print(rows)
-        for (i in rows)
-            x <- i
-            outcome_PNsort$rank <- x
-        
-    })
+    
 
     ## 30 day death rate
