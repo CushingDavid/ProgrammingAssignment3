@@ -5,7 +5,7 @@
 
 
 
-rankhospital <- function(state, illness , num = "best")
+rankhospital <- function(state, illness , num = "best") {
     if (num == "best") num <- 1
     
     ## Read outcome data
@@ -22,11 +22,14 @@ rankhospital <- function(state, illness , num = "best")
     outcome$heart_attack <- as.numeric(as.character(outcome$heart_attack))
     outcome$heart_failure <- as.numeric(as.character(outcome$heart_failure))
     outcome$pneumonia <- as.numeric(as.character( outcome$pneumonia ))
+    outcome$state <- as.character(outcome$state, length(2))
+    state <- as.character(state, length(2))
     
     ## Check that state and outcome are valid:
     
     state_list <- unique(outcome$state)
-    if(!state %in% names(state_list)){
+    as.vector(state_list)
+    if(!state %in% (state_list)){
         
         stop("invalid state code!!!")
         
@@ -51,13 +54,16 @@ rankhospital <- function(state, illness , num = "best")
         
     }    else {
         Print("Try again with a different illness!") 
-    }  
+    } 
     
-    
-    
-    
+    outcome_sort$state <- as.character(outcome_sort$state, length(2))
     
     ## Return hospital name in that state with the given rank. 
     
-
-    ## 30 day death rate
+    rank_row <- outcome_sort[ which(outcome_sort$state == state & outcome_sort$rank == num), ]
+    
+    print(rank_row)
+    
+    ## 30 day death rate  
+    print(rank_row[, 1])
+}
